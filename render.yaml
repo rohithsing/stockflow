@@ -1,0 +1,22 @@
+# One-click deploy config for Render (https://render.com).
+#
+# This targets the free instance type, which has an ephemeral filesystem: the
+# SQLite file is recreated whenever the instance restarts or redeploys. That is
+# fine for a demo. For durable storage, move to `plan: starter` and attach a
+# disk mounted at /var/data, then point DATABASE_FILE at it.
+services:
+  - type: web
+    name: stockflow
+    runtime: node
+    region: singapore
+    plan: free
+    buildCommand: npm install && npm run build
+    startCommand: npm start
+    healthCheckPath: /api/health
+    envVars:
+      - key: NODE_ENV
+        value: production
+      - key: JWT_SECRET
+        generateValue: true
+      - key: DEFAULT_LOW_STOCK_THRESHOLD
+        value: "5"
