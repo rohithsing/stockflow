@@ -10,7 +10,9 @@ services:
     runtime: node
     region: singapore
     plan: free
-    buildCommand: npm install && npm run build
+    # NODE_ENV=production below makes npm skip devDependencies, but vite and
+    # tailwind live there and are needed to build the client, so ask for them.
+    buildCommand: npm install --include=dev && npm run build
     startCommand: npm start
     healthCheckPath: /api/health
     envVars:
