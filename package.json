@@ -1,0 +1,24 @@
+{
+  "name": "stockflow",
+  "version": "0.1.0",
+  "private": true,
+  "description": "StockFlow - a minimal multi-tenant SaaS inventory management app",
+  "workspaces": [
+    "server",
+    "client"
+  ],
+  "scripts": {
+    "dev": "concurrently -n server,client -c blue,magenta \"npm run dev -w server\" \"npm run dev -w client\"",
+    "dev:server": "npm run dev -w server",
+    "dev:client": "npm run dev -w client",
+    "build": "npm run build -w client",
+    "start": "node server/src/index.js",
+    "postinstall": "echo \"Run 'npm run dev' to start the app\""
+  },
+  "engines": {
+    "node": ">=20"
+  },
+  "devDependencies": {
+    "concurrently": "^9.1.0"
+  }
+}
