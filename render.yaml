@@ -20,3 +20,7 @@ services:
         generateValue: true
       - key: DEFAULT_LOW_STOCK_THRESHOLD
         value: "5"
+      # Recreates the demo organization on boot so the published demo login
+      # keeps working across the free tier's restarts.
+      - key: SEED_DEMO_DATA
+        value: "true"

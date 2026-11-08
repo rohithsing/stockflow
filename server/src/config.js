@@ -23,5 +23,6 @@ export const config = {
     process.env.DATABASE_FILE || './data/stockflow.sqlite'
   ),
   defaultLowStockThreshold: Number(process.env.DEFAULT_LOW_STOCK_THRESHOLD || 5),
+  seedDemoData: process.env.SEED_DEMO_DATA === 'true',
   clientDistDir: path.join(ROOT_DIR, 'client', 'dist'),
 };

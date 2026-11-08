@@ -79,6 +79,7 @@ npm start                # serves API + built client on :4000
 | `JWT_SECRET` | dev-only fallback | **Must** be set to a long random string in production |
 | `DATABASE_FILE` | `./data/stockflow.sqlite` | SQLite file path |
 | `DEFAULT_LOW_STOCK_THRESHOLD` | `5` | Threshold given to a new organization |
+| `SEED_DEMO_DATA` | `false` | When `true`, recreates the demo org on boot if missing |
 
 ## API
 
@@ -135,7 +136,9 @@ The blueprint targets Render's **free** instance type, which comes with two cave
 before you click the demo link:
 
 - The filesystem is ephemeral, so the SQLite database is recreated whenever the instance restarts
-  or redeploys. Anything you add during a session sticks around for that session.
+  or redeploys. Anything you add during a session sticks around for that session. The blueprint
+  sets `SEED_DEMO_DATA=true` so the demo organization is rebuilt on boot and the demo login in
+  this README always works.
 - Free instances spin down after ~15 minutes of inactivity, so the first request after a quiet
   spell can take up to a minute while the container wakes up.
 
