@@ -39,6 +39,10 @@ swapping the driver — the queries are already written against standard SQL.
 
 ## Running locally
 
+Requires **Node 22** (pinned in `.node-version`). `better-sqlite3` ships prebuilt binaries per
+Node major; on newer majors npm falls back to compiling from source, which fails against the
+current V8 headers.
+
 ```bash
 git clone <this repo>
 cd stockflow
